@@ -28,9 +28,11 @@
     NSMutableData *_data;
     NSMutableDictionary *_polls;
     BOOL _isClosed;
+    NSArray* _cookies;
 }
 
 @property (nonatomic, weak) id <SocketIOTransportDelegate> delegate;
 @property (nonatomic) BOOL isClosed;
+@property (nonatomic) NSArray* cookies;
 
 @end

@@ -37,6 +37,7 @@ static NSString* kSecureSocketPortURL = @"wss://%@:%d/socket.io/1/websocket/%@";
 @implementation SocketIOTransportWebsocket
 
 @synthesize delegate;
+@synthesize cookies = _cookies;
 
 - (id) initWithDelegate:(id<SocketIOTransportDelegate>)delegate_
 {
@@ -70,6 +71,7 @@ static NSString* kSecureSocketPortURL = @"wss://%@:%d/socket.io/1/websocket/%@";
     
     _webSocket = [[SRWebSocket alloc] initWithURL:url];
     _webSocket.delegate = self;
+    _webSocket.requestCookies = _cookies;
     DEBUGLOG(@"Opening %@", url);
     [_webSocket open];
 }

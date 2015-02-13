@@ -43,7 +43,8 @@ static NSString* kSecureXHRPortURL = @"https://%@:%d/socket.io/1/xhr-polling/%@"
 @implementation SocketIOTransportXHR
 
 @synthesize delegate,
-            isClosed = _isClosed;
+            isClosed = _isClosed,
+            cookies = _cookies;
 
 - (id) initWithDelegate:(id<SocketIOTransportDelegate>)delegate_
 {
@@ -151,6 +152,9 @@ static NSString* kSecureXHRPortURL = @"https://%@:%d/socket.io/1/xhr-polling/%@"
         [req setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
     }
     [req setValue:@"Keep-Alive" forHTTPHeaderField:@"Connection"];
+    if (_cookies) {
+        [req setValue:[NSHTTPCookie requestHeaderFieldsWithCookies:_cookies] forKey:@"Cookie"];
+    }
     
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
 

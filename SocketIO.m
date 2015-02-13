@@ -769,6 +769,7 @@ NSString* const SocketIOException = @"SocketIOException";
                                         code:SocketIOTransportsNotSupported
                                     userInfo:nil];
         }
+        [_transport setCookies:_cookies];
     }
     
     // if connection didn't return the values we need -> fail

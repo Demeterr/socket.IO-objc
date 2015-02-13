@@ -37,6 +37,7 @@
 @protocol SocketIOTransport <NSObject>
 
 - (id) initWithDelegate:(id <SocketIOTransportDelegate>)delegate;
+- (void) setCookies:(NSArray*)cookies;
 - (void) open;
 - (void) close;
 - (BOOL) isReady;

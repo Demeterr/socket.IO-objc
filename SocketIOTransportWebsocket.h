@@ -26,8 +26,10 @@
 @interface SocketIOTransportWebsocket : NSObject <SocketIOTransport, SRWebSocketDelegate>
 {
     SRWebSocket *_webSocket;
+    NSArray *_cookies;
 }
 
 @property (nonatomic, weak) id <SocketIOTransportDelegate> delegate;
+@property (nonatomic) NSArray *cookies;
 
 @end
